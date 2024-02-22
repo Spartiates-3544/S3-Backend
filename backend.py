@@ -17,17 +17,22 @@ def scanAndDecode():
     responseJson = response.strip()
     responseJson = json.loads(responseJson)
     
-    with open('{}/{}{}.json'.format(MATCH_DIRECTORY, responseJson['general']['matchType'], responseJson['general']['matchNumber']), 'w') as file:
+    with open('{}/{}{}.json'.format(MATCH_DIRECTORY, responseJson['general']['matchType']['value'], responseJson['general']['matchNumber']['value']), 'w') as file:
         file.write(response)
 
 def generateExcel():
-    try:
+    # try:
         timestamp = datetime.strftime(datetime.now(), '%Y-%m-%dT%H%M')
         table = pd.DataFrame()
 
         for filename in os.listdir(MATCH_DIRECTORY):
             with open(os.path.join(MATCH_DIRECTORY, filename)) as file:
-                data = pd.json_normalize(json.load(file))
+                matchJson = json.load(file)
+                for value in matchJson.values():
+                    value.pop('type', None)
+                    value.pop('options', None)
+
+                data = pd.json_normalize(matchJson)
                 table = pd.concat([table, data])
 
         if not os.path.isdir(OUTPUT_DIRECTORY):
@@ -39,5 +44,7 @@ def generateExcel():
                 table.to_excel('{directory:}/{filename:}.xlsx'.format(directory = OUTPUT_DIRECTORY, filename = timestamp), index=False)
         else:
             table.to_excel('{directory:}/{filename:}.xlsx'.format(directory = OUTPUT_DIRECTORY, filename = timestamp), index=False)
-    except:
-        raise Exception('Error generating excel file! Check console output.')
+    # except:
+    #     raise Exception('Error generating excel file! Check console output.')
+            
+generateExcel()

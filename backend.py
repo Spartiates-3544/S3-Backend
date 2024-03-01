@@ -25,13 +25,13 @@ def generateExcel():
         timestamp = datetime.strftime(datetime.now(), '%Y-%m-%dT%H%M')
         table = pd.DataFrame()
 
+        rawDataSheet = 'rawData'
+
+        writer = pd.ExcelWriter('{directory:}/{filename:}.xlsx'.format(directory = OUTPUT_DIRECTORY, filename = timestamp), engine  = 'xlsxwriter')
+
         for filename in os.listdir(MATCH_DIRECTORY):
             with open(os.path.join(MATCH_DIRECTORY, filename)) as file:
                 matchJson = json.load(file)
-                for value in matchJson.values():
-                    value.pop('type', None)
-                    value.pop('options', None)
-
                 data = pd.json_normalize(matchJson)
                 table = pd.concat([table, data])
 
@@ -40,10 +40,19 @@ def generateExcel():
                 os.mkdir(OUTPUT_DIRECTORY)
             except FileExistsError as e:
                 print(e)
-            else:
-                table.to_excel('{directory:}/{filename:}.xlsx'.format(directory = OUTPUT_DIRECTORY, filename = timestamp), index=False)
+            # else:
+            #     table.to_excel('{directory:}/{filename:}.xlsx'.format(directory = OUTPUT_DIRECTORY, filename = timestamp), index=False)
         else:
-            table.to_excel('{directory:}/{filename:}.xlsx'.format(directory = OUTPUT_DIRECTORY, filename = timestamp), index=False)
+            table.to_excel(writer, index=False, sheet_name = rawDataSheet)
+
+        # adjust the column widths based on the content
+        worksheet = writer.sheets[rawDataSheet]    
+
+        for i, col in enumerate(table.columns):
+            width = max(table[col].apply(lambda x: len(str(x))).max(), len(col))
+            worksheet.set_column(i, i, width)
+
+        writer.close()
     # except:
     #     raise Exception('Error generating excel file! Check console output.')
             

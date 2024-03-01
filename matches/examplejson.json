@@ -1,97 +1,74 @@
-{
-    "general": {
-        "team": {
-            "type": "number",
-            "value": 3544
+[
+    {
+        "general": {
+            "team": 3544,
+            "matchType": "Playoff",
+            "matchNumber": 69,
+            "scouterName": "Ali"
         },
-        "matchType": {
-            "type": "selector",
-            "options": [
-                "Qualif",
-                "Playoff"
-            ],
-            "value": "Qualif"
+    
+        "autonomous": {
+            "hasAutonomous": true,
+            "gamePiecesAmp": 69,
+            "gamePiecesSpeaker": 69
         },
-        "matchNumber": {
-            "type": "number",
-            "value": 69
+    
+        "teleop": {
+            "cycleCountDefended": 69,
+            "cycleCountUndefended": 69,
+            "gamePiecesAmp": 69,
+            "gamePiecesSpeaker": 69
         },
-        "scouterName": {
-            "type": "string",
-            "value": "Ali"
+    
+        "endgame": {
+            "isParked": true,
+            "humanPlayerScored": true
+        },
+    
+        "postgame": {
+            "penalties": 69,
+            "driverSkill": "bad",
+            "defenseRating": 69,
+            "speedRating": 69,
+            "tippy": true,
+            "notes": "test"
         }
+    
     },
-
-    "autonomous": {
-        "hasAutonomous": {
-            "type": "boolean",
-            "value": true
+    {
+        "general": {
+            "team": 3544,
+            "matchType": "Playoff",
+            "matchNumber": 69,
+            "scouterName": "Ali"
         },
-        "gamePiecesAmp": {
-            "type": "number",
-            "value": 69
+    
+        "autonomous": {
+            "hasAutonomous": true,
+            "gamePiecesAmp": 69,
+            "gamePiecesSpeaker": 69
         },
-        "gamePiecesSpeaker": {
-            "type": "number",
-            "value": 69
+    
+        "teleop": {
+            "cycleCountDefended": 69,
+            "cycleCountUndefended": 69,
+            "gamePiecesAmp": 69,
+            "gamePiecesSpeaker": 69
+        },
+    
+        "endgame": {
+            "isParked": true,
+            "humanPlayerScored": true
+        },
+    
+        "postgame": {
+            "penalties": 69,
+            "driverSkill": "bad",
+            "defenseRating": 69,
+            "speedRating": 69,
+            "tippy": true,
+            "notes": "test"
         }
-    },
-
-    "teleop": {
-        "cycleCountDefended": {
-            "type": "number",
-            "value": 69
-        },
-        "cycleCountUndefended": {
-            "type": "number",
-            "value": 69
-        },
-        "gamePiecesAmp": {
-            "type": "number",
-            "value": 69
-        },
-        "gamePiecesSpeaker": {
-            "type": "number",
-            "value": 69
-        }
-    },
-
-    "endgame": {
-        "isParked": {
-            "type": "boolean",
-            "value": true
-        },
-        "humanPlayerScored": {
-            "type": "boolean",
-            "value": true
-        }
-    },
-
-    "postgame": {
-        "penalties": {
-            "type": "number",
-            "value": 69
-        },
-        "driverSkill": {
-            "type": "string",
-            "value": "bad"
-        },
-        "defenseRating": {
-            "type": "number",
-            "value": 69
-        },
-        "speedRating": {
-            "type": "number",
-            "value": 69
-        },
-        "tippy": {
-            "type": "boolean",
-            "value": true
-        },
-        "notes": {
-            "type": "string",
-            "value": "uwu owo good notes"
-        }
+    
     }
-
-}
+]

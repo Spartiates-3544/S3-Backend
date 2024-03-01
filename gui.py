@@ -48,7 +48,7 @@ def export_button_click():
     try:
         backend.generateExcel()
     except Exception as e:
-        messagebox.showerror(title="Export", message='Error generating excel file! Check console output.')
+        messagebox.showerror(title="Export", message=e)
     else:
         messagebox.showinfo(title="Export", message='Successfully exported data to excel!')
 

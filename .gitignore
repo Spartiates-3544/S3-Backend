@@ -11,6 +11,9 @@ Scripts/
 pyvenv.cfg
 share/
 
+processImages.py
+output/
+
 # Distribution / packaging
 .Python
 build/
